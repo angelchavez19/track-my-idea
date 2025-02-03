@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Provider {
+  GOOGLE
+  GITHUB
+  EMAIL
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Lang {
+  en
+  es
+}
+
+model User {
+  id          Int              @id @default(autoincrement())
+  profile     UserProfile?
+  preferences UserPreferences?
+
+  provider Provider @default(EMAIL)
+
+  token           String?   @unique
+  refreshToken    String?   @unique
+  expirationToken DateTime?
+
+  createdAt DateTime @default(now())
+
+  role            Role    @default(USER)
+  isAccountActive Boolean @default(true)
+  isEmailVerified Boolean @default(false)
+  isSuperAdmin    Boolean @default(false)
+
+  twoFactorSecret  String?
+  twoFactorIV      String?
+  twoFactorEnabled Boolean @default(false)
+}
+
+model UserProfile {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  username     String  @unique @db.VarChar(50)
+  firstName    String  @db.VarChar(50)
+  lastName     String  @db.VarChar(50)
+  profileImage String?
+  email        String  @unique @db.VarChar(256)
+}
+
+model UserPreferences {
+  id     Int  @id @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
+
+  language Lang
+}
