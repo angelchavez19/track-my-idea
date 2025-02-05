@@ -1,0 +1,33 @@
+// THEME
+
+@mixin light-theme
+    --background-primary: #fff
+    --text-primary: #000
+
+@mixin dark-theme
+    --background-primary: #000
+    --text-primary: #fff
+
+:root
+    @include light-theme
+
+@media (prefers-color-scheme: dark)
+    :root
+        @include dark-theme()
+
+[data-theme="light"]
+    @include light-theme()
+
+[data-theme="dark"]
+    @include dark-theme()
+
+// STYLES
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+    body
+        background-color: var(--background-primary)
+        color: var(--text-primary)
