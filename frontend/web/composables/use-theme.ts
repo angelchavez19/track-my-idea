@@ -1,10 +1,11 @@
 export type ThemeT = "system" | "dark" | "light";
 
 export const useTheme = () => {
-  const storage = useLocalStorage<string>({
+  const storage = useLocalStorage<ThemeT>({
     defaultValue: "system",
     key: "track-my-idea:theme",
   });
+
   const themeSelected = ref(storage.value.value);
 
   const changeTheme = (theme: ThemeT) => {
@@ -15,7 +16,7 @@ export const useTheme = () => {
     else document.body.setAttribute("data-theme", theme);
   };
 
-  changeTheme(themeSelected.value as ThemeT);
+  changeTheme(themeSelected.value);
 
   return { changeTheme, themeSelected };
 };

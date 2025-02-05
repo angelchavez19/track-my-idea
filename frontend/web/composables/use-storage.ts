@@ -9,21 +9,24 @@ export const useLocalStorage = <T>({
   defaultValue,
   key,
 }: LocalStorageProps<T>) => {
+  const isObject = typeof defaultValue === "object";
+
+  const setStorageValue = (value: T) => {
+    if (isObject) localStorage.setItem(key, JSON.stringify(value));
+    else localStorage.setItem(key, String(value));
+  };
+
   const getStoredValue = (): T => {
     const storedValue = localStorage.getItem(key);
 
-    if (storedValue !== null) {
+    if (storedValue !== null)
       try {
         return JSON.parse(storedValue) as T;
       } catch {
         return storedValue as unknown as T;
       }
-    }
 
-    if (typeof defaultValue === "object")
-      localStorage.setItem(key, JSON.stringify(defaultValue));
-    else localStorage.setItem(key, String(defaultValue));
-
+    setStorageValue(defaultValue);
     return defaultValue;
   };
 
@@ -32,11 +35,9 @@ export const useLocalStorage = <T>({
   watch(
     value,
     (newValue) => {
-      if (typeof newValue === "object")
-        localStorage.setItem(key, JSON.stringify(newValue));
-      else localStorage.setItem(key, String(newValue));
+      setStorageValue(newValue);
     },
-    { deep: typeof defaultValue === "object" }
+    { deep: isObject }
   );
 
   return { value };
