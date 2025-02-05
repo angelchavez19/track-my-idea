@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
 // THEME
 
 @mixin light-theme
-    --background-primary: #fff
+    --background: #fff
+    --background-primary: #000
     --text-primary: #000
 
 @mixin dark-theme
-    --background-primary: #000
+    --background: #000
+    --background-primary: #fff
     --text-primary: #fff
 
 :root
@@ -29,5 +33,7 @@
     box-sizing: border-box
 
     body
-        background-color: var(--background-primary)
+        @include mixins.font-primary()
+        background-color: var(--background)
         color: var(--text-primary)
+        transition: background-color 0.2s ease-in-out

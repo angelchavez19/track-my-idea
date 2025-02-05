@@ -16,4 +16,14 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
+  css: ["~/assets/globals.sass"],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        sass: {
+          additionalData: '@use "~/assets/mixins"\n',
+        },
+      },
+    },
+  },
 });
