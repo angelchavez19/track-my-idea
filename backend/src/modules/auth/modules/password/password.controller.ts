@@ -1,7 +1,7 @@
 import { $Enums } from '@prisma/client';
 import { Body, Controller, HttpCode, Post, Query } from '@nestjs/common';
 import { LangValidationPipe } from 'src/pipes/lang/lang.pipe';
-import { ConfirmChangePasswordDTO } from './confirm-change-password.dto';
+import { ConfirmChangePasswordDTO } from './dto/confirm-change-password.dto';
 import { PasswordService } from './password.service';
 import { EmailDTO } from '../../dto/email.dto';
 

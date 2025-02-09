@@ -34,7 +34,7 @@ model User {
   email        String  @unique @db.VarChar(256)
   password     String  @db.VarChar(60)
 
-  provider Provider @default(EMAIL)
+  provider Provider @default(EMAIL) // Quitar
 
   token           String?   @unique
   refreshToken    String?   @unique

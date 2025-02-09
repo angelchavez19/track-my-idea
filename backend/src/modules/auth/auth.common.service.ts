@@ -2,11 +2,11 @@ import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { JwtService, JwtSignOptions } from '@nestjs/jwt';
-import { ExistingUserI } from 'src/common/prisma.common';
 import { CookieOptions, Response } from 'express';
 import { ConfigCommonService } from 'src/common/config.common';
 import { PrismaService } from 'src/providers/prisma/prisma';
 import { LoggerCommonService } from 'src/common/logger.common';
+import { ExistingUserI } from 'src/types/user.type';
 
 @Injectable()
 export class AuthCommonService {

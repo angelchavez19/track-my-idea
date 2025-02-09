@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { $Enums } from '@prisma/client';
 import { LoggerCommonService } from 'src/common/logger.common';
 import { EmailDTO } from '../../dto/email.dto';
-import { ConfirmChangePasswordDTO } from './confirm-change-password.dto';
+import { ConfirmChangePasswordDTO } from './dto/confirm-change-password.dto';
 import { PrismaCommonService } from 'src/common/prisma.common';
 import { AuthCommonService } from '../../auth.common.service';
 import { ConfigCommonService } from 'src/common/config.common';
