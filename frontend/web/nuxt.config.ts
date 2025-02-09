@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2025-02-03",
   devtools: { enabled: false },
+  modules: ["@nuxtjs/i18n"],
   app: {
     head: {
       link: [
@@ -25,5 +26,15 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  i18n: {
+    locales: [
+      { code: "en", language: "en-US" },
+      { code: "es", language: "es-ES" },
+    ],
+    defaultLocale: "en",
+    strategy: "prefix",
+    detectBrowserLanguage: false,
+    vueI18n: "./i18n.config.ts",
   },
 });

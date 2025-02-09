@@ -27,6 +27,10 @@ export class AuthCommonService {
     return hashedPassword;
   }
 
+  comparePassword(plain: string, hashed: string) {
+    return bcrypt.compareSync(plain, hashed);
+  }
+
   getJWT(payload: object = {}, config?: JwtSignOptions) {
     const token = this.jwt.sign(payload, config);
     this.logger.logger.info('JWT generated', { payload });

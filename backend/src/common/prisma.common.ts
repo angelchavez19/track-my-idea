@@ -27,9 +27,10 @@ export class PrismaCommonService {
     firstName: true,
     lastName: true,
     email: true,
-    isEmailVerified: true,
     password: true,
     provider: true,
+    role: true,
+    isEmailVerified: true,
     twoFactorSecret: true,
     twoFactorIV: true,
     twoFactorEnabled: true,
@@ -43,7 +44,10 @@ export class PrismaCommonService {
   }
 
   getExistingUserByToken(token: string) {
-    return this.prisma.user.findUnique({ where: { token } });
+    return this.prisma.user.findUnique({
+      select: this.selectExistingUser,
+      where: { token },
+    });
   }
 
   getExistingUserById(id: number) {

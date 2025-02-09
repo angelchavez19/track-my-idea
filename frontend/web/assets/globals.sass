@@ -2,6 +2,10 @@
 
 // THEME
 
+@mixin common-theme
+    --error: #f00
+    --border-input: #acacac
+
 @mixin light-theme
     --background: #fff
     --background-primary: #000
@@ -13,17 +17,21 @@
     --text-primary: #fff
 
 :root
-    @include light-theme
+    @include light-theme()
+    @include common-theme()
 
 @media (prefers-color-scheme: dark)
     :root
         @include dark-theme()
+        @include common-theme()
 
 [data-theme="light"]
     @include light-theme()
+    @include common-theme()
 
 [data-theme="dark"]
     @include dark-theme()
+    @include common-theme()
 
 // STYLES
 

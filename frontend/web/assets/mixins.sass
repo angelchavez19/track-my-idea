@@ -25,3 +25,23 @@
 
 @mixin font-primary($size: 1rem, $weight: 400)
     @include font($size, 'Poppins', $weight)
+
+// Inputs
+
+@mixin input-container
+    @include f-col()
+    width: 100%
+    gap: .2rem
+
+@mixin input-field
+    width: 100%
+    padding: .5rem .4rem
+    border: 1px solid var(--border-input)
+    border-radius: 10px
+    background-color: transparent
+    color: var(--text-primary)
+    font-size: 1rem
+
+@mixin input-error
+    color: var(--error)
+    font-size: .9rem

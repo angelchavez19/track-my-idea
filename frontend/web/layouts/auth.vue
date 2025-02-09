@@ -19,9 +19,7 @@ const handleChangeTheme = () => {
       <div class="Content">
         <div class="Logo"><IconLogo /></div>
         <h1 class="Title"><slot name="title" /></h1>
-        <div class="Form">
-          <slot />
-        </div>
+        <slot />
         <slot name="footer" />
       </div>
     </main>
@@ -60,6 +58,7 @@ const handleChangeTheme = () => {
 
     .Content
       @include mixins.f-c-col()
+      width: 100%
       gap: 1rem
 
       .Logo
@@ -70,8 +69,4 @@ const handleChangeTheme = () => {
       .Title
         font-size: 1.25rem
         text-align: center
-
-      .Form
-        @include mixins.f-col()
-        padding: 1rem 0
 </style>

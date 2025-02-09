@@ -10,9 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@formwerk/core": "^0.6.6",
+    "@nuxtjs/i18n": "^9.1.5",
     "nuxt": "^3.15.4",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "sass": "^1.83.4"
