@@ -1,7 +1,10 @@
 <script setup lang="ts">
 const router = useRouter();
+const { langSelected } = useLang();
 
 onMounted(() => {
-  router.push("/auth/login");
+  router.push(`/${langSelected.value}/auth/login`);
 });
 </script>
+
+<template></template>

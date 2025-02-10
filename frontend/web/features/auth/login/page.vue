@@ -2,31 +2,34 @@
 
 <template>
   <NuxtLayout name="auth">
-    <template #title>Log In to your Account</template>
+    <template #title>{{ $t("pages.auth.login.title") }}</template>
 
     <form novalidate class="Form">
-      <FormEmailInput label="Email" name="email" />
-      <FormPasswordInput label="Password" name="password">
+      <FormEmailInput :label="$t('pages.auth.login.form.fields.email')" name="email" />
+      <FormPasswordInput
+        :label="$t('pages.auth.login.form.fields.password.label')"
+        name="password"
+      >
         <template #help>
           <FormBaseInputHelp>
             <NuxtLink
               class="ForgotLink"
               :to="$localePath('/auth/password/request-change')"
             >
-              Forgot your password?
+              {{ $t("pages.auth.login.form.fields.password.help") }}
             </NuxtLink>
           </FormBaseInputHelp>
         </template>
       </FormPasswordInput>
 
-      <Button text="Log In" />
+      <Button :text="$t('pages.auth.login.form.button')" />
     </form>
 
     <template #footer>
       <FormLink
         :to="$localePath('/auth/register')"
-        text="You don't have an account?"
-        link-text="Create an account"
+        :text="$t('pages.auth.login.footer.link1.text')"
+        :link-text="$t('pages.auth.login.footer.link1.linkText')"
       />
     </template>
   </NuxtLayout>

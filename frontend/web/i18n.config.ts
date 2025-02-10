@@ -2,6 +2,8 @@ import { messages } from "./locales/messages";
 
 export type LocalesT = "en" | "es";
 
+export const Locales: LocalesT[] = ["en", "es"];
+
 export interface Lang {
   value: LocalesT;
   label: string;
@@ -9,7 +11,7 @@ export interface Lang {
 
 export const defaultLang: Lang = { value: "en", label: "English" };
 
-export const languages: Lang[] = [
+export const Languages: Lang[] = [
   { value: "en", label: "English" },
   { value: "es", label: "Español" },
 ];

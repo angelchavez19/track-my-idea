@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTextField, type TextFieldProps } from '@formwerk/core';
-import { EmailSchema } from './schemas';
+import { useSchemas } from './schemas';
+
+const { EmailSchema } = useSchemas()
 
 const props = defineProps<TextFieldProps>()
 

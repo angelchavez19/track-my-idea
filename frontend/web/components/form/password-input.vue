@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { useTextField, type TextFieldProps } from '@formwerk/core';
+import { useSchemas } from './schemas';
+
+const { StringSchema } = useSchemas()
 
 const props = defineProps<TextFieldProps>()
 
 const {errorMessage, errorMessageProps, inputProps, isTouched, labelProps} = useTextField({
     ...props,
+    schema: StringSchema,
     disableHtmlValidation: true,
     type: 'password',
 })
