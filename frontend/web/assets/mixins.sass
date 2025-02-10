@@ -26,22 +26,18 @@
 @mixin font-primary($size: 1rem, $weight: 400)
     @include font($size, 'Poppins', $weight)
 
-// Inputs
+// Input
 
-@mixin input-container
-    @include f-col()
+@mixin input()
+    @include font-primary(1rem)
     width: 100%
-    gap: .2rem
-
-@mixin input-field
-    width: 100%
-    padding: .5rem .4rem
-    border: 1px solid var(--border-input)
-    border-radius: 10px
-    background-color: transparent
+    padding: .75rem 1rem
+    border-radius: .5rem
+    border: none
+    outline: 1px solid var(--border-input)
+    background-color: var(--background)
     color: var(--text-primary)
-    font-size: 1rem
 
-@mixin input-error
-    color: var(--error)
-    font-size: .9rem
+@mixin input-focus()
+    border: none
+    outline: 2px solid var(--primary)

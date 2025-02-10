@@ -1,7 +1,7 @@
 <script setup lang="ts">
-definePageMeta({ layout: "auth" });
+import Page from "~/features/auth/login/page.vue";
 </script>
 
-<template>Login</template>
-
-<style scoped lang="sass"></style>
+<template>
+  <Page />
+</template>

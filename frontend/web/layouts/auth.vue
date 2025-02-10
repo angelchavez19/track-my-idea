@@ -20,6 +20,9 @@ const handleChangeTheme = () => {
         <div class="Logo"><IconLogo /></div>
         <h1 class="Title"><slot name="title" /></h1>
         <slot />
+        <div class="Divider" v-if="$slots.footer">
+          <DividerHorizontal />
+        </div>
         <slot name="footer" />
       </div>
     </main>
@@ -35,7 +38,6 @@ const handleChangeTheme = () => {
     @include mixins.f-c-col()
     padding: 2rem 1rem
     width: 100%
-    max-width: 500px
 
     .ThemeSelector
       position: fixed
@@ -69,4 +71,11 @@ const handleChangeTheme = () => {
       .Title
         font-size: 1.25rem
         text-align: center
+
+      .Divider
+        width: 100%
+
+@media (min-width: 480px)
+  .Container .Parent
+    max-width: 324px
 </style>

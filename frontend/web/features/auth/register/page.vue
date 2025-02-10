@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { z } from "zod";
+// import { z } from "zod";
 
-const form = ref({
-  firstName: "",
-  lastName: "",
-  username: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-});
+// const form = ref({
+//   firstName: "",
+//   lastName: "",
+//   username: "",
+//   email: "",
+//   password: "",
+//   confirmPassword: "",
+// });
 
-const nameSchema = z.string().min(1).max(50);
-const emailSchema = z.string().email();
-const passwordSchema = z
-  .string()
-  .min(8)
-  .max(72)
-  .regex(/d+/, "Password must contain at least one number");
+// const nameSchema = z.string().min(1).max(50);
+// const emailSchema = z.string().email();
+// const passwordSchema = z
+//   .string()
+//   .min(8)
+//   .max(72)
+//   .regex(/d+/, "Password must contain at least one number");
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const passwordSchema = z
     <template #title>Create an Account</template>
 
     <form class="Form" novalidate>
-      <FormTextInput
+      <!-- <FormTextInput
         label="First Name"
         v-model="form.firstName"
         :schema="nameSchema"
@@ -70,7 +70,7 @@ const passwordSchema = z
         disable-html-validation
         required
         type="password"
-      />
+      /> -->
     </form>
   </NuxtLayout>
 </template>

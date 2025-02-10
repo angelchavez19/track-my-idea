@@ -1,65 +1,71 @@
 <script setup lang="ts">
-import { type TextFieldProps, useTextField } from "@formwerk/core";
+import { useTextField, type TextFieldProps } from '@formwerk/core';
 
-const props = defineProps<TextFieldProps>();
+const props = defineProps<TextFieldProps>()
 
-const { inputProps, labelProps, errorMessage, errorMessageProps } = useTextField(props);
+const {errorMessage, errorMessageProps, inputProps, isTouched, labelProps} = useTextField({
+    ...props,
+    disableHtmlValidation: true,
+    type: 'password',
+})
 
 const showPassword = ref(false)
-const touched = ref(false)
-
-const input = defineModel()
 </script>
 
 <template>
-  <div class="Input">
-    <label v-bind="labelProps">{{ label }}</label>
+  <FormBaseInput>
+    <template #label>
+      <FormBaseInputLabel v-bind="labelProps">{{ label }}</FormBaseInputLabel>
+    </template>
 
-    <div class="Field">
+    <div class="Container">
       <input
-        v-nodel="input"
+        class="Input"
         v-bind="inputProps"
-        @blur="touched = true"
         :type="showPassword ? 'text' : 'password'"
       />
-      <button class="Icon" @click="showPassword = !showPassword" type="button">
-        <IconEye v-show="showPassword" />
-        <IconEyeInvisible v-show="!showPassword" />
+      <button @click="showPassword = !showPassword" type="button">
+        <IconEye style="fill: var(--background-primary)" v-show="showPassword" />
+        <IconEyeInvisible
+          style="fill: var(--background-primary)"
+          v-show="!showPassword"
+        />
       </button>
     </div>
 
-    <div v-if="errorMessage && touched" v-bind="errorMessageProps">
-      <span class="Error">{{ errorMessage }}</span>
-    </div>
-  </div>
+    <template #help>
+      <slot name="help" />
+    </template>
+
+    <template #error>
+      <FormBaseInputError v-bind="errorMessageProps" v-show="isTouched">
+        {{ errorMessage }}
+      </FormBaseInputError>
+    </template>
+  </FormBaseInput>
 </template>
 
 <style scoped lang="sass">
-.Input
-  @include mixins.input-container()
+.Container
+  width: 100%
+  position: relative
 
-  .Field
-    @include mixins.f-c()
-    width: 100%
-    position: relative
+  .Input
+    @include mixins.input()
+    padding: .75rem calc( 35px + 1rem ) .75rem 1rem
 
-    input
-      @include mixins.input-field()
-      padding-right: 40px
 
-    button
-      $size: 30px
-      width: $size
-      height: $size
-      background-color: transparent
-      border: none
-      cursor: pointer
-      position: absolute
-      right: 5px
+  .Input:focus
+    @include mixins.input-focus()
 
-      svg
-        fill: var(--background-primary)
-
-  div .Error
-    @include mixins.input-error()
+  button
+    $size: 35px
+    position: absolute
+    right: 5px
+    top: 50%
+    transform: translateY(-50%)
+    width: $size
+    height: $size
+    background-color: transparent
+    border: none
 </style>
