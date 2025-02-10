@@ -100,7 +100,9 @@ const handleChangeTheme = () => {
     .LangSelector
       @include mixins.font-primary(.9rem)
       padding: .5rem
-
+      background-color: var(--background)
+      color: var(--text-primary)
+      border-radius: 8px
 
 @media (min-width: 480px)
   .Container
