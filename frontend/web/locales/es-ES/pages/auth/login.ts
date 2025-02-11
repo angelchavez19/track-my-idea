@@ -16,4 +16,8 @@ export const login = {
       linkText: "Crea una cuenta",
     },
   },
+  errors: {
+    401: "Credenciales inválidas",
+    404: "Usuario no encontrado o no verificado",
+  },
 };

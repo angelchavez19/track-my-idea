@@ -1,8 +1,10 @@
-export type ThemeT = "system" | "dark" | "light";
+export type ThemeT = "dark" | "light";
 
 export const useTheme = () => {
+  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   const storage = useLocalStorage<ThemeT>({
-    defaultValue: "system",
+    defaultValue: isDark ? "dark" : "light",
     key: "track-my-idea:theme",
   });
 
@@ -12,8 +14,7 @@ export const useTheme = () => {
     themeSelected.value = theme;
     storage.value.value = theme;
 
-    if (theme === "system") document.body.removeAttribute("data-theme");
-    else document.body.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
   };
 
   changeTheme(themeSelected.value);

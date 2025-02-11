@@ -16,4 +16,8 @@ export const login = {
       linkText: "Create an account",
     },
   },
+  errors: {
+    401: "Invalid credentials",
+    404: "User not found or not verified",
+  },
 };

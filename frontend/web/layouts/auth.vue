@@ -5,9 +5,7 @@ const { changeTheme, themeSelected } = useTheme();
 const { changeLang, langSelected } = useLang();
 
 const handleChangeTheme = () => {
-  if (themeSelected.value === "system") changeTheme("light");
-  else if (themeSelected.value === "light") changeTheme("dark");
-  else changeTheme("system");
+  changeTheme(themeSelected.value === "dark" ? "light" : "dark");
 };
 </script>
 
@@ -27,8 +25,7 @@ const handleChangeTheme = () => {
     <footer class="Footer">
       <button class="ThemeSelector" @click="handleChangeTheme" aria-label="Change theme">
         <IconThemeSun v-if="themeSelected === 'light'" />
-        <IconThemeMoon v-else-if="themeSelected === 'dark'" />
-        <IconThemeSystem v-else />
+        <IconThemeMoon v-else />
       </button>
       <select
         class="LangSelector"
