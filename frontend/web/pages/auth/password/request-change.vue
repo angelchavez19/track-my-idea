@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Page from "~/features/auth/password/request-change/page.vue";
+</script>
 
-<template>Request Change</template>
-
-<style scoped lang="sass"></style>
+<template>
+  <Page />
+</template>

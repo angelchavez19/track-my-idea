@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Page from "~/features/auth/password/confirm-change/page.vue";
+</script>
 
-<template>Confirm Change Password</template>
-
-<style scoped lang="sass"></style>
+<template>
+  <Page />
+</template>

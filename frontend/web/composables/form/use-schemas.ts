@@ -19,11 +19,15 @@ export const useSchemas = () => {
     .regex(/\d/, t("schemas.number"))
     .regex(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/, t("schemas.symbol"))
     .regex(/^[\x20-\x7E]+$/, t("schemas.invalid"));
+  const UsernameSchema = StringSchema.min(3, t("schemas.min", { min: 3 }))
+    .max(30, t("schemas.max", { max: 30 }))
+    .regex(/^[a-zA-Z0-9-_]+$/, t("schemas.username"));
 
   return {
     EmailSchema,
     NameSchema,
     StringSchema,
+    UsernameSchema,
     PasswordSchema,
   };
 };

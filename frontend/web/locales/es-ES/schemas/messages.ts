@@ -8,4 +8,6 @@ export const schemas = {
   number: "Debe contener al menos un número.",
   symbol: "Debe contener al menos un símbolo.",
   invalid: "La contraseña no debe contener caracteres Unicode o inválidos.",
+  username:
+    "El nombre de usuario solo puede contener letras, números, guiones y guiones bajos. No se permiten espacios ni caracteres Unicode.",
 };

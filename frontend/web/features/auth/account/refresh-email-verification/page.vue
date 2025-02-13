@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRefreshEmailVerificationPage } from "./refres-email-verification.composable";
+import { useRefreshEmailVerificationPage } from "./refresh-email-verification.composable";
 
 const { loading, isValid, onSubmit } = useRefreshEmailVerificationPage();
 </script>
@@ -38,7 +38,4 @@ const { loading, isValid, onSubmit } = useRefreshEmailVerificationPage();
   padding: 1rem .2rem
   width: 100%
   gap: 1rem
-
-  .ForgotLink
-    color: var(--text-primary)
 </style>
