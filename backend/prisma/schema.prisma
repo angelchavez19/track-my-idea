@@ -29,12 +29,12 @@ model User {
 
   username     String  @unique @db.VarChar(30)
   firstName    String  @db.VarChar(50)
-  lastName     String  @db.VarChar(50)
+  lastName     String? @db.VarChar(50)
   profileImage String?
   email        String  @unique @db.VarChar(256)
-  password     String  @db.VarChar(60)
+  password     String? @db.VarChar(60)
 
-  provider Provider @default(EMAIL) // Quitar
+  provider Provider @default(EMAIL)
 
   token           String?   @unique
   refreshToken    String?   @unique

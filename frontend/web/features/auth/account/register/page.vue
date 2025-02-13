@@ -9,6 +9,9 @@ const { loading, isValid, onSubmit } = useRegisterPage();
   <NuxtLayout name="auth">
     <template #title>{{ $t("pages.auth.register.title") }}</template>
 
+    <Social />
+    <DividerHorizontal>{{ $t("components.social.divider") }}</DividerHorizontal>
+
     <form @submit.prevent="onSubmit" novalidate class="Form">
       <FormInputText
         :label="$t('form.fields.firstName')"

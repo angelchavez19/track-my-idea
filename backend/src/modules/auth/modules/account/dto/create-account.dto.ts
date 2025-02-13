@@ -18,8 +18,12 @@ export class CreateAccountDTO {
   lastName: string;
 
   @IsString()
-  @MinLength(1, { message: 'Username must be at least 1 characters long.' })
+  @MinLength(3, { message: 'Username must be at least 3 character long.' })
   @MaxLength(30, { message: 'Username must not exceed 30 characters.' })
+  @Matches(/^[a-zA-Z0-9-_]+$/, {
+    message:
+      'Username can only contain letters, numbers, hyphens, and underscores. No spaces or Unicode characters are allowed.',
+  })
   username: string;
 
   @IsEmail({}, { message: 'Invalid email format.' })

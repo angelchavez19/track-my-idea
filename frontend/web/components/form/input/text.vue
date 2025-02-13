@@ -7,7 +7,7 @@ const props = defineProps<TextFieldProps>();
 
 const { errorMessage, errorMessageProps, inputProps, isTouched, labelProps} = useTextField({
   ...props,
-  schema: NameSchema,
+  schema: props.schema || NameSchema,
   disableHtmlValidation: true,
   type: 'text',
 })

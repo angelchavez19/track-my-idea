@@ -8,6 +8,9 @@ const { loading, isValid, onSubmit } = useLoginPage();
   <NuxtLayout name="auth">
     <template #title>{{ $t("pages.auth.login.title") }}</template>
 
+    <Social />
+    <DividerHorizontal>{{ $t("components.social.divider") }}</DividerHorizontal>
+
     <form @submit.prevent="onSubmit" novalidate class="Form">
       <FormInputEmail :label="$t('form.fields.email')" name="email" />
       <FormInputPassword :label="$t('form.fields.password')" name="password">

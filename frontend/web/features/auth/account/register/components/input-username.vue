@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { BACKEND_URL } from "~/config/api";
+import { useSchemas } from "~/composables/form/use-schemas";
 
 interface Props {
   label: string;
@@ -7,6 +8,7 @@ interface Props {
 defineProps<Props>();
 
 const { $axios } = useNuxtApp();
+const { UsernameSchema } = useSchemas();
 
 const username = ref("");
 const availableUsername = ref<string>("");
@@ -15,7 +17,7 @@ const isChecking = ref(false);
 let debounceTimeout: ReturnType<typeof setTimeout>;
 
 const checkUsername = async () => {
-  if (!username.value) {
+  if (!username.value || !UsernameSchema.safeParse(username.value).success) {
     availableUsername.value = "";
     return;
   }
@@ -55,6 +57,7 @@ watch(username, () => {
     :label="label"
     name="username"
     autocomplete="username"
+    :schema="UsernameSchema"
   >
     <template #help>
       <div class="help-text" v-if="!isChecking">

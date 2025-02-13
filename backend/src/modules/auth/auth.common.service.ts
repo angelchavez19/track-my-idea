@@ -113,8 +113,6 @@ export class AuthCommonService {
 
     this.logger.logger.info('Session tokens generated and cookies set', {
       userId: user.id,
-      accessToken,
-      refreshToken,
     });
   }
 
