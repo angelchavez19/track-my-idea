@@ -1,26 +1,7 @@
 <script setup lang="ts">
-import { toast } from "vue-sonner";
-import { useCustomForm } from "~/components/form/use-custom-form";
-import { BACKEND_URL } from "~/config/api";
+import { useLoginPage } from "./login.composable";
 
-const { $axios, $localePath } = useNuxtApp();
-const { t } = useI18n();
-const { handleSubmit, loading, isValid } = useCustomForm();
-const router = useRouter();
-
-const onSubmit = handleSubmit(async (data) => {
-  try {
-    await $axios.post(`${BACKEND_URL}/auth/login`, data);
-    router.push($localePath("/app"));
-  } catch (error: any) {
-    if (error.response) {
-      if (error.response.status === 401) toast.error(t("pages.auth.login.errors.401"));
-      else if (error.response.status === 404)
-        toast.error(t("pages.auth.login.errors.404"));
-      else toast.error(t("error.500"));
-    }
-  }
-});
+const { loading, isValid, onSubmit } = useLoginPage();
 </script>
 
 <template>
@@ -28,22 +9,19 @@ const onSubmit = handleSubmit(async (data) => {
     <template #title>{{ $t("pages.auth.login.title") }}</template>
 
     <form @submit.prevent="onSubmit" novalidate class="Form">
-      <FormEmailInput :label="$t('pages.auth.login.form.fields.email')" name="email" />
-      <FormPasswordInput
-        :label="$t('pages.auth.login.form.fields.password.label')"
-        name="password"
-      >
+      <FormInputEmail :label="$t('form.fields.email')" name="email" />
+      <FormInputPassword :label="$t('form.fields.password')" name="password">
         <template #help>
           <FormBaseInputHelp>
             <NuxtLink
               class="ForgotLink"
               :to="$localePath('/auth/password/request-change')"
             >
-              {{ $t("pages.auth.login.form.fields.password.help") }}
+              {{ $t("pages.auth.login.form.helps.password") }}
             </NuxtLink>
           </FormBaseInputHelp>
         </template>
-      </FormPasswordInput>
+      </FormInputPassword>
 
       <Button
         :text="$t('pages.auth.login.form.button')"
@@ -54,7 +32,7 @@ const onSubmit = handleSubmit(async (data) => {
 
     <template #footer>
       <FormLink
-        :to="$localePath('/auth/register')"
+        :to="$localePath('/auth/account/register')"
         :text="$t('pages.auth.login.footer.link1.text')"
         :link-text="$t('pages.auth.login.footer.link1.linkText')"
       />

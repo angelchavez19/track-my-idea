@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { useTextField, type TextFieldProps } from '@formwerk/core';
-import { useSchemas } from './schemas';
+import { useSchemas } from '~/composables/form/use-schemas';
 
-const { StringSchema } = useSchemas()
+const { StringSchema, PasswordSchema } = useSchemas()
 
-const props = defineProps<TextFieldProps>()
+interface Props extends TextFieldProps {
+  isPassword?: boolean
+}
+const props = defineProps<Props>()
 
 const {errorMessage, errorMessageProps, inputProps, isTouched, labelProps} = useTextField({
     ...props,
-    schema: StringSchema,
+    schema: props.isPassword ? PasswordSchema : StringSchema,
     disableHtmlValidation: true,
     type: 'password',
 })
@@ -19,7 +22,9 @@ const showPassword = ref(false)
 <template>
   <FormBaseInput>
     <template #label>
-      <FormBaseInputLabel v-bind="labelProps">{{ label }}</FormBaseInputLabel>
+      <FormBaseInputLabel v-bind="labelProps" :for="inputProps.id">
+        {{ label }}
+      </FormBaseInputLabel>
     </template>
 
     <div class="Container">

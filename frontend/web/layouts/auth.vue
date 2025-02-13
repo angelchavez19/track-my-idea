@@ -19,10 +19,12 @@ const handleChangeTheme = () => {
         <div class="Divider" v-if="$slots.footer">
           <DividerHorizontal />
         </div>
-        <slot name="footer" />
+        <div class="Footer" v-if="$slots.footer">
+          <slot name="footer" />
+        </div>
       </div>
     </main>
-    <footer class="Footer">
+    <footer class="FooterPage">
       <button class="ThemeSelector" @click="handleChangeTheme" aria-label="Change theme">
         <IconThemeSun v-if="themeSelected === 'light'" />
         <IconThemeMoon v-else />
@@ -30,6 +32,8 @@ const handleChangeTheme = () => {
       <select
         class="LangSelector"
         aria-label="Lang Selector"
+        id="lang"
+        name="lang"
         @change="(e: any) => changeLang(e.target.value)"
       >
         <option
@@ -68,10 +72,11 @@ const handleChangeTheme = () => {
         font-size: 1.25rem
         text-align: center
 
-      .Divider
+      .Divider,
+      .Footer
         width: 100%
 
-  .Footer
+  .FooterPage
     @include mixins.f-c()
     justify-content: space-around
     width: 100%
@@ -104,6 +109,6 @@ const handleChangeTheme = () => {
 @media (min-width: 480px)
   .Container
     .Parent,
-    .Footer
+    .FooterPage
       max-width: 324px
 </style>

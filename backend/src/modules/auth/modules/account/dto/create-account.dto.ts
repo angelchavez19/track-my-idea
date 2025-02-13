@@ -19,7 +19,7 @@ export class CreateAccountDTO {
 
   @IsString()
   @MinLength(1, { message: 'Username must be at least 1 characters long.' })
-  @MaxLength(50, { message: 'Username must not exceed 50 characters.' })
+  @MaxLength(30, { message: 'Username must not exceed 30 characters.' })
   username: string;
 
   @IsEmail({}, { message: 'Invalid email format.' })

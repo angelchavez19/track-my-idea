@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTextField, type TextFieldProps } from '@formwerk/core';
-import { useSchemas } from './schemas';
+import { useSchemas } from '~/composables/form/use-schemas';
 
 const { EmailSchema } = useSchemas()
 
@@ -18,7 +18,9 @@ const { errorMessage, errorMessageProps, inputProps, isTouched, labelProps} = us
 <template>
   <FormBaseInput>
     <template #label>
-      <FormBaseInputLabel v-bind="labelProps">{{ label }}</FormBaseInputLabel>
+      <FormBaseInputLabel v-bind="labelProps" :for="inputProps.id">
+        {{ label }}
+      </FormBaseInputLabel>
     </template>
 
     <input class="Input" v-bind="inputProps" />

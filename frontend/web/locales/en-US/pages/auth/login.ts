@@ -1,12 +1,8 @@
 export const login = {
   title: "Log in to your account",
   form: {
-    fields: {
-      email: "Email",
-      password: {
-        label: "Password",
-        help: "Forgot your password?",
-      },
+    helps: {
+      password: "Forgot your password?",
     },
     button: "Log in",
   },

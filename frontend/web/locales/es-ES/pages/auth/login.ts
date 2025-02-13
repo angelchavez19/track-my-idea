@@ -1,12 +1,8 @@
 export const login = {
   title: "Inicia sesión en tu cuenta",
   form: {
-    fields: {
-      email: "Correo electrónico",
-      password: {
-        label: "Contraseña",
-        help: "¿Olvidaste tu contraseña?",
-      },
+    helps: {
+      password: "¿Olvidaste tu contraseña?",
     },
     button: "Iniciar sesión",
   },

@@ -75,7 +75,7 @@ export class AccountService {
     }
 
     const token = this.authCommon.getJWT();
-    const url = `${this.config.clientUrl}/auth/account/confirm?token=${token}`;
+    const url = `${this.config.clientUrl}/${lang}/auth/account/confirm?token=${token}`;
 
     try {
       const newUser = await this.prisma.user.create({
@@ -137,7 +137,7 @@ export class AccountService {
     }
 
     const token = this.authCommon.getJWT();
-    const url = `${this.config.clientUrl}/auth/account/confirm?token=${token}`;
+    const url = `${this.config.clientUrl}/${lang}/auth/account/confirm?token=${token}`;
 
     await this.prisma.user.update({
       data: { token },
