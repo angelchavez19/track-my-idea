@@ -60,7 +60,4 @@ const { loading, isValid, onSubmit } = useRegisterPage();
   padding: 1rem .2rem
   width: 100%
   gap: 1rem
-
-  .ForgotLink
-    color: var(--text-primary)
 </style>
