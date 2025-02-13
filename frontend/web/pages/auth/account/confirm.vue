@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Page from "~/features/auth/account/confirm/page.vue";
+</script>
 
-<template>Confirm Account</template>
-
-<style scoped lang="sass"></style>
+<template>
+  <Page />
+</template>
