@@ -1,0 +1,43 @@
+@mixin f()
+    display: flex
+
+@mixin f-j-c()
+    @include f()
+    justify-content: center
+
+@mixin f-c()
+    @include f()
+    align-items: center
+    justify-content: center
+
+@mixin f-col()
+    @include f()
+    flex-direction: column
+
+@mixin f-c-col()
+    @include f-c()
+    flex-direction: column
+
+@mixin font($size, $family, $weight)
+    font-size: $size
+    font-family: $family
+    font-weight: $weight
+
+@mixin font-primary($size: 1rem, $weight: 400)
+    @include font($size, 'Poppins', $weight)
+
+// Input
+
+@mixin input()
+    @include font-primary(1rem)
+    width: 100%
+    padding: .75rem 1rem
+    border-radius: .5rem
+    border: none
+    outline: 1px solid var(--border-input)
+    background-color: var(--background)
+    color: var(--text-primary)
+
+@mixin input-focus()
+    border: none
+    outline: 2px solid var(--primary)
